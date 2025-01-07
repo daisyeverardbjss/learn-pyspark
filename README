@@ -1,0 +1,17 @@
+This is a Pandas tutorial
+
+ctrl z on windows to exit python terminal, cmmd d on mac
+
+WSL???
+
+```
+python -m venv PandasTutorial
+source pandasTutorial/bin/activate
+pip install pandas
+```
+
+```
+pip install pyspark==3.5.3
+```
+
+## IDEAS
