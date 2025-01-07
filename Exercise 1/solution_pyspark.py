@@ -41,8 +41,8 @@ df = df.withColumn("price", regexp_replace('price', '£', '').cast("float"))
 # print(f"New Count: {new_count}")
 
 # # TODO: remove impossible values (Age should be no higher than 100)
-df = df.filter(col('age') <= 100)
-df.show()
+# df = df.filter(col('age') <= 100)
+# df.show()
 
 # # TODO: split out names into first and last names
 # def get_first_name(name: str) -> str:
@@ -63,5 +63,6 @@ df.show()
 # df = df.drop(columns=['name'])
 
 # df.to_csv("clean_data.csv", index=False)
+
 # # TODO: duplicate rows (would need to add timestamps)
 # # TODO: Title case first and last name

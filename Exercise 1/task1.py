@@ -5,6 +5,9 @@ import pandas as pd
 df = pd.read_csv('./data.csv')
 print(df.to_string()) 
 
+# look at the data
+
+
 # TODO: Remove whitespace from strings. (look at trim)
 # TODO: Correct inconsistent capitalizations (e.g., product names or cities) (look at regex_replace)
 # TODO: Handle invalid or impossible values (e.g., Evan's age of 790)
