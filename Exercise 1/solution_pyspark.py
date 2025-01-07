@@ -1,30 +1,48 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
 
+
+# Read in dataframe
 spark = SparkSession.builder.appName("pyspark tutorial").getOrCreate()
+df = spark.read.csv("./data.csv", header='true')
+original_df = df
 
-df = spark.read.csv("./data.csv")
-df.show()
+# TODO: look at the data
+# df.show()
+# df.select("city", "age").show()
+# df.select("product").where(col("price") > 10).show()
 
-# # TODO: Remove whitespace from strings. 
-# df['name'] = df['name'].str.strip()
-# df['city'] = df['city'].str.strip()
-# df['product'] = df['product'].str.strip()
-# df['price'] = df['price'].str.strip()
+# Lazily executed
+
+# # TODO: Remove whitespace from strings
+# df = df.withColumn("name", trim(df.name))
+# df = df.withColumn("city", trim(df.city))
+# df = df.withColumn("product", trim(df.product))
+# df = df.withColumn("price", trim(df.price))
+
 
 # # TODO: remove pound symbols and make sure the price column has the right type
-# df['price'] = df['price'].str.strip('£')
-# df = df.astype({'price': 'float'})
+# df = df.withColumn("price", regexp_replace('price', '£', ''))
+# df = df.withColumn("price", df.price.cast("float"))
+
+df = df.withColumn("price", regexp_replace('price', '£', '').cast("float"))
 # print(df.dtypes)
 
 # # TODO: Correct inconsistent capitalizations on products and cities. Use Title Case
-# df['product'] = df['product'].str.title()
-# df['city'] = df['city'].str.title()
+# df = df.withColumn('product', initcap(col('product')))
+# df = df.withColumn('city', initcap(df['city']))
+# df = df.withColumn('name', initcap(df.name))
 
 # # TODO: Handle NaNs / empty cells. Maybe only for certain columns. e.g. don't drop if Nan in city
-# df = df.dropna()
+# original_count = df.count()
+# new_count = df.filter(col('name').isNotNull()).count()
+
+# print(f"Original Count: {original_count}")
+# print(f"New Count: {new_count}")
 
 # # TODO: remove impossible values (Age should be no higher than 100)
-# df = df[df.age <= 100]
+df = df.filter(col('age') <= 100)
+df.show()
 
 # # TODO: split out names into first and last names
 # def get_first_name(name: str) -> str:
