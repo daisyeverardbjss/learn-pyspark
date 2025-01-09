@@ -36,7 +36,8 @@ df = df.withColumn('name', initcap(df.name))
 
 # # TODO: Handle NaNs / empty cells. Maybe only for certain columns. e.g. don't drop if Nan in city
 original_count = df.count()
-new_count = df.filter(col('name').isNotNull()).count()
+df = df.filter(col('name').isNotNull())
+new_count = df.count()
 
 print(f"Original Count: {original_count}")
 print(f"New Count: {new_count}")
@@ -68,7 +69,5 @@ get_last_name_udf = udf(lambda x:get_last_name(x),StringType())
 df = df.withColumn("first_name", get_first_name_udf(col("name")))
 df = df.withColumn("last_name", get_last_name_udf(col("name")))
 df = df.filter(col('first_name') != "").drop("name")
-df = df[df.first_name != ""]
-df = df.drop('name')
 
 df.write.format("csv").mode("overwrite").save("clean_data")
