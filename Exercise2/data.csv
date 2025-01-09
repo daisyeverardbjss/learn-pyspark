@@ -1,5 +1,5 @@
-smithcity,age,product,price,first_name,last_name
-Leeds,11,Raincoat,16.53,Ian,Kelly
+city,age,product,price,first_name,last_name,full_name
+Leeds,11,Raincoat,16.53,Ian,Kelly,Ian Kelly
 London,24,Ice Cream - Vanilla,2.09,Anna,Smith
 Edinburgh,78,Ice Cream - Chocolate,7.96,George,Black
 Edinburgh,53,Sunglasses,18.81,Anna,Smith
