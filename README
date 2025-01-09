@@ -21,3 +21,5 @@ pip install pyspark==3.5.3
 asdf
 poetry
 python version = 3.13.1t
+
+use 'poetry run python solution_pyspark.py' to run the file

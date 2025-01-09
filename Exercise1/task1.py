@@ -14,4 +14,3 @@ print(df.to_string())
 # TODO: Remove special characters or convert formats (e.g., £ in price column)
 # TODO: Handle missing values
 # TODO: split out names into first and last names
-# TODO: duplicate rows (would need to add timestamps)
