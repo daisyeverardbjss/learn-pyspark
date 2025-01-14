@@ -29,7 +29,15 @@ def get_last_name(name: str) -> str:
 
 get_last_name_udf = udf(lambda x:get_last_name(x),StringType())
 
-# All Dataframe Processing
-df = df.withColumn("name", initcap(trim(df.name))).withColumn("city", initcap(trim(df.city))).withColumn("product", initcap(trim(df.product))).withColumn("prince", regexp_replace(trim(df.price), '£', '').cast("float")).filter(col('name').isNotNull()).filter(col('age') <= 100).withColumn("first_name", get_first_name_udf(col("name"))).withColumn("last_name", get_last_name_udf(col("name"))).filter(col('first_name') != "").drop("name")
+# In spark you can chain all of your methods together on one line
+# Just because you could doesn't mean you should
+df = (df.withColumn("name", initcap(trim(df.name)))
+      .withColumn("city", initcap(trim(df.city)))
+      .withColumn("product", initcap(trim(df.product)))
+      .withColumn("price", regexp_replace(trim(df.price), '£', '').cast("float"))
+      .filter(col('name').isNotNull()).filter(col('age') <= 100)
+      .withColumn("first_name", get_first_name_udf(col("name")))
+      .withColumn("last_name", get_last_name_udf(col("name")))
+      .filter(col('first_name') != "").drop("name"))
 
 df.show()

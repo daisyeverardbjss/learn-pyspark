@@ -23,3 +23,19 @@ poetry
 python version = 3.13.1t
 
 use 'poetry run python solution_pyspark.py' to run the file
+
+filter and where are the same
+
+.show or use display.
+
+select(...alias()) and withColumn()
+
+# Databricks setup
+
+Setup Cluster
+
+Upload databricks notebooks
+Workspace > Home > 3 dots > import
+
+Upload CSV file
+Catalog > leave Target directory blank > upload file > create table with UI > select my cluster > name table > tick first row is header, infer schema
