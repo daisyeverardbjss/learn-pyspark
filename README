@@ -12,8 +12,10 @@ asdf
 poetry
 python version = 3.13.1t
 
+With the terminal open in this project, run `poetry install --no-root` to install all the depencies in the pyproject.toml file
+
 use 'poetry run python task1.py' to run the file
-If you run the command from the learn-pyspark directory, you will need to add the full filepath `Local/'Exercise 1'/task1.py`
+If you run the command from the learn-pyspark directory, you will need to add the full filepath `Local/Exercise1/task1.py`
 
 # Databricks setup
 
