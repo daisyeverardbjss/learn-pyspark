@@ -8,9 +8,33 @@ spark = SparkSession.builder.appName("pyspark tutorial").getOrCreate()
 df = spark.read.csv("./data.csv", header='true')
 original_df = df
 
-# TODO: look at the data
-# df.show()
-# df.select("city", "age").show()
+# EXAMPLES
+
+# Print a whole dataframe with df.display()
+df.display()
+
+# Select and show only 2 columns
+df.select('city', 'age').display()
+
+# filter columns to see only certain rows
+# there are many ways to access a column, chose whichever you prefer
+df.select("product").where(col("price") > 10).display()
+# or 
+df.select("product").filter(col("price") > 10).display()
+# or
+df.select("product").filter(df['price'] > 10).display()
+# or 
+df.select("product").filter(df.price > 10).display()
+
+# Add a new column using withColumn
+# lit adds the same 'literal' to every row of the column
+df.withColumn("new_column", lit("add this string to every cell")).display()
+
+# Remove a column with drop
+# You can chain multiple methods by adding them to the line with dot notation
+df.drop('city').drop('age').display()
+
+# TASKS START HERE
 # df.select("product").where(col("price") > 10).show()
 
 # Lazily executed
@@ -21,11 +45,13 @@ df = df.withColumn("city", trim(df.city))
 df = df.withColumn("product", trim(df.product))
 df = df.withColumn("price", trim(df.price))
 
-
 # # TODO: remove pound symbols and make sure the price column has the right type
+# seperate lines version
 df = df.withColumn("price", regexp_replace('price', '£', ''))
 df = df.withColumn("price", df.price.cast("float"))
+print(df.dtypes)
 
+# oneline version
 df = df.withColumn("price", regexp_replace('price', '£', '').cast("float"))
 print(df.dtypes)
 

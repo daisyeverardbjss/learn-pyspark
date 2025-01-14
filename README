@@ -2,7 +2,11 @@
 
 This is a tutorial to try using the basics of pyspark to read a csv file into a dataframe and clean the data.
 
-There are 2 options to set up this project. It can either be run locally or run on a databricks account
+There are 2 options to set up this project. It can either be run locally or run on a databricks account. The recommended approach is to set this up on databricks
+
+# Databricks setup
+
+You may also run this lab by creating a databricks community edition account and using the notebooks provided in the `Databricks` directory. More detailed instructions can be found in the README there
 
 # Local Setup
 
@@ -10,14 +14,11 @@ THIS DOESN'T WORK YET, PLEASE USE DATABRICKS VERSION
 
 asdf
 poetry
-python version = 3.13.1t
+python version = 3.12
 
 run `poetry init`
+`poetry env use 3.12` will use python version 3.12
 With the terminal open in this project, run `poetry install --no-root` to install all the depencies in the pyproject.toml file
 
-use 'poetry run python task1.py' to run the file
-If you run the command from the learn-pyspark directory, you will need to add the full filepath `Local/Exercise1/task1.py`
-
-# Databricks setup
-
-You may also run this lab by creating a databricks community edition account and using the notebooks provided in the `Databricks` directory. More detailed instructions can be found in the README there
+Navigate to the Exercise 1 folder in the terminal and run the file task1.py with the command
+use `poetry run python task1.py` to run the file

@@ -1,18 +1,5 @@
-Reading in a csv
+In this task we will
 
-Challenges:
-
-- Read in the CSV (link to docs, or maybe have this already done)
-- Remove whitespace from strings.
-- Correct inconsistent capitalizations (e.g., product names or cities)
-- Handle invalid or impossible values (e.g., Evan's age of 790)
-- Remove special characters or convert formats (e.g., £ in price column)
-- Handle missing values
-- split out names into first and last names
-- duplicate rows (would need to add timestamps)
-
-Anomaly Detection Challenges:
-
-- Find entries with out-of-range values (e.g., age > 120 or price < 0)
-- Detect duplicates (e.g., rows with the same data except for minor differences in formatting)
-- Find mismatched types (e.g., numerical columns with text like "NA")
+- Read a csv file into a dataframe
+- Clean the data using various pyspark methods
+- Save the data to a new output file
