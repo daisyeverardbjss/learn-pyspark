@@ -1,41 +1,18 @@
-This is a Pandas tutorial
+# Overview
 
-ctrl z on windows to exit python terminal, cmmd d on mac
+This is a tutorial to try using the basics of pyspark to read a csv file into a dataframe and clean the data.
 
-WSL???
+There are 2 options to set up this project. It can either be run locally or run on a databricks account
 
-```
-python -m venv PandasTutorial
-source pandasTutorial/bin/activate
-pip install pandas
-```
-
-```
-pip install pyspark==3.5.3
-```
-
-## IDEAS
-
-## USES
+# Local Setup
 
 asdf
 poetry
 python version = 3.13.1t
 
-use 'poetry run python solution_pyspark.py' to run the file
-
-filter and where are the same
-
-.show or use display.
-
-select(...alias()) and withColumn()
+use 'poetry run python task1.py' to run the file
+If you run the command from the learn-pyspark directory, you will need to add the full filepath `Local/'Exercise 1'/task1.py`
 
 # Databricks setup
 
-Setup Cluster
-
-Upload databricks notebooks
-Workspace > Home > 3 dots > import
-
-Upload CSV file
-Catalog > leave Target directory blank > upload file > create table with UI > select my cluster > name table > tick first row is header, infer schema
+You may also run this lab by creating a databricks community edition account and using the notebooks provided in the `Databricks` directory. More detailed instructions can be found in the README there
