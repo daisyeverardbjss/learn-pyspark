@@ -6,6 +6,8 @@ There are 2 options to set up this project. It can either be run locally or run 
 
 # Local Setup
 
+THIS DOESN'T WORK YET, PLEASE USE DATABRICKS VERSION
+
 asdf
 poetry
 python version = 3.13.1t
