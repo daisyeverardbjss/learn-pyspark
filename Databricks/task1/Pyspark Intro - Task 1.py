@@ -35,13 +35,13 @@ df.select('city', 'age').display()
 
 # filter columns to see only certain rows
 # there are many ways to access a column, chose whichever you prefer
-df.select("product").where(col("price") > 10).display()
+df.where(col("price") > 10).display()
 # or 
-df.select("product").filter(col("price") > 10).display()
+df.filter(col("price") > 10).display()
 # or
-df.select("product").filter(df['price'] > 10).display()
+df.filter(df['price'] > 10).display()
 # or 
-df.select("product").filter(df.price > 10).display()
+df.filter(df.price > 10).display()
 
 # COMMAND ----------
 
@@ -61,6 +61,7 @@ df.drop('city').drop('age').display()
 # MAGIC
 # MAGIC #### Remove whitespace from strings
 # MAGIC Some of our columns have extra whitespace that need removing. For instance "London", "  London", and "London  " are all different
+# MAGIC Trim the whitespaces from name, city, product, and price
 # MAGIC https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.trim.html
 # MAGIC
 

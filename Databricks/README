@@ -1,7 +1,8 @@
 ## Create account
 
 Complete the sign up process at https://www.databricks.com/try-databricks#account
-The cloud provider chosen should have no impact on this demo as we will not be using external storage locations
+Chose the Community edition when signing up
+using external storage locations
 
 ## Setup Cluster
 

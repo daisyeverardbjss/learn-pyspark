@@ -94,10 +94,10 @@ print(f"New Count: {new_count}")
 # MAGIC hint: You'll need to define 2 functions that can get a first name and a last name, register them as udfs, then use them on the name column
 
 def get_first_name(name: str) -> str:
-    TODO
+    #TODO
 
 def get_last_name(name: str) -> str:
-    TODO
+    #TODO
 
 get_first_name_udf = TODO
 get_last_name_udf = TODO
