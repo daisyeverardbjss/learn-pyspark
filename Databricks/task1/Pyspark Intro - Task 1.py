@@ -89,9 +89,7 @@ df.display()
 
 # COMMAND ----------
 
-# Seperate version
 df = df.TODO
-
 print(df.dtypes)
 
 # COMMAND ----------

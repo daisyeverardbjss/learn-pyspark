@@ -6,7 +6,6 @@ from pyspark.sql.types import StringType
 # Read in dataframe
 spark = SparkSession.builder.appName("pyspark tutorial").getOrCreate()
 df = spark.read.csv("./data.csv", header='true')
-original_df = df
 
 # EXAMPLES
 
@@ -35,9 +34,6 @@ df.withColumn("new_column", lit("add this string to every cell")).display()
 df.drop('city').drop('age').display()
 
 # TASKS START HERE
-# df.select("product").where(col("price") > 10).show()
-
-# Lazily executed
 
 # # TODO: Remove whitespace from strings
 df = df.withColumn("name", trim(df.name))
