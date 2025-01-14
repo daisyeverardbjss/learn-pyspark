@@ -12,6 +12,7 @@ asdf
 poetry
 python version = 3.13.1t
 
+run `poetry init`
 With the terminal open in this project, run `poetry install --no-root` to install all the depencies in the pyproject.toml file
 
 use 'poetry run python task1.py' to run the file
