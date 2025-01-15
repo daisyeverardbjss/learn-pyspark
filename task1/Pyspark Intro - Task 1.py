@@ -7,6 +7,8 @@
 # MAGIC - You may need to wait a few minutes for it to spin up
 # MAGIC
 # MAGIC - Click the play arrow in the top left of each cell to run the code in it
+# MAGIC - In some cases there are `df_some_name.TODO` lines. These denote where you should change the code and illustrate the name you should use for your final dataframe in that cell. You may write as many lines of code as wanted and use other intermediary dataframes for your tranformations
+
 
 # COMMAND ----------
 
@@ -175,33 +177,9 @@ print(f"New Count: {new_count}")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### Challenge: split out names into first and last names using UDFs
-# MAGIC https://docs.databricks.com/en/udf/index.html
-# MAGIC
-# MAGIC hint: You'll need to define 2 functions that can get a first name and a last name, register them as udfs, then use them on the name column
-# MAGIC - UDFs are generally best avoided where possible. The are a very inefficient method of data processing 
-
-# COMMAND ----------
-
-def get_first_name(name: str) -> str:
-    TODO
-
-def get_last_name(name: str) -> str:
-    TODO
-
-get_first_name_udf = TODO
-get_last_name_udf = TODO
-
-df_split_name = df_filtered_ages.TODO
-
-df_split_name.display()
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ## Use a column transform functions
-# MAGIC The functions are also custom functions applied to a column, but are much more efficient than UDFs
-# MAGIC
+# MAGIC ## Use a column transform function
+# MAGIC These functions are used to apply custom transformation logic to a column
+# MAGIC hint: You'll need to define 2 functions that can get a first name and a last name
 
 # COMMAND ----------
 
@@ -214,6 +192,31 @@ def get_last_name(name_col: Column) -> Column:
 df_split_name = df_filtered_ages.TODO
 
 df_split_name.display()
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC #### UDFs 
+# MAGIC https://docs.databricks.com/en/udf/index.html
+# MAGIC - A User Defined Function is another way of applying custom logic to columns, but is less efficient than column transformation and best avoided where possible
+# MAGIC hint: The functions you define will need to be registred as UDFs
+
+# COMMAND ----------
+
+def get_first_name(name: str) -> str:
+    TODO
+
+def get_last_name(name: str) -> str:
+    TODO
+
+# This registers the functions as UDFs
+get_first_name_udf = udf(lambda x:get_first_name(x),StringType())
+get_last_name_udf = udf(lambda x:get_last_name(x),StringType())
+
+df_split_name = df_filtered_ages.TODO
+
+df_split_name.display()
+
 
 # COMMAND ----------
 
