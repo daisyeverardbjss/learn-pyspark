@@ -1,25 +1,35 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC
-# MAGIC ## Pyspark Basics - cleaning data
+# MAGIC # Pyspark Intro
 # MAGIC
-# MAGIC Create, attach, run cluster
-# MAGIC Run the first block of code with the arrow in the top left to read data into a dataframe
+# MAGIC - Click Connect in the top right and select your cluster to attach it to this notebook
+# MAGIC - You may need to wait a few minutes for it to spin up
+# MAGIC
+# MAGIC - Click the play arrow in the top left of each cell to run the code in it
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## Part 1 - Cleaning Data
 
 # COMMAND ----------
 
 # import additional functions provided by pyspark
-from pyspark.sql.functions import *
+import pyspark.sql.functions as F
+from pyspark.sql.types import StringType, FloatType
+from pyspark.sql import Column
 
 # COMMAND ----------
 
 # read the table you created as a dataframe
+# You name need to change the name of the table depending on what yours was called
 df = spark.read.table('task1_input')
 
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### Look at the data
+# MAGIC ## Examples
 
 # COMMAND ----------
 
@@ -54,6 +64,11 @@ df.withColumn("new_column", lit("add this string to every cell")).display()
 # Remove a column with drop
 # You can chain multiple methods by adding them to the line with dot notation
 df.drop('city').drop('age').display()
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## Tasks
 
 # COMMAND ----------
 
@@ -160,10 +175,11 @@ print(f"New Count: {new_count}")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### Challenged: split out names into first and last names using UDFs
+# MAGIC #### Challenge: split out names into first and last names using UDFs
 # MAGIC https://docs.databricks.com/en/udf/index.html
 # MAGIC
 # MAGIC hint: You'll need to define 2 functions that can get a first name and a last name, register them as udfs, then use them on the name column
+# MAGIC - UDFs are generally best avoided where possible. The are a very inefficient method of data processing 
 
 # COMMAND ----------
 
@@ -180,6 +196,25 @@ df = df.TODO
 
 df.display()
 
+# COMMAND
+
+# MAGIC %md
+# MAGIC ## Use a column transform functions
+# MAGIC The functions are also custom functions applied to a column, but are much more efficient than UDFs
+# MAGIC
+
+# COMMAND ----------
+
+def get_first_name(name_col: Column) -> Column:
+    TODO
+
+def get_last_name(name_col: Column) -> Column:
+    TODO
+
+df_split_name = df_filtered_ages.TODO
+
+df_split_name.display()
+
 # COMMAND ----------
 
 # MAGIC %md
@@ -190,3 +225,69 @@ df.display()
 # COMMAND ----------
 
 # SAVE DATAFRAME AS TABLE HERE
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC # Part 2 - Answer the Questions
+# MAGIC #### Use pyspark methods on your dataframe to find answers to these analytic questions about the data
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC Aggregating data means combining data into groups. There are various types of aggregations including:
+# MAGIC - Max
+# MAGIC - Min
+# MAGIC - Avg
+# MAGIC - Sum
+# MAGIC
+# MAGIC You can use a dictionary with the column to aggregate as the key and a method
+# MAGIC - `df.groupBy("department").agg({"salary":"max"})`
+# MAGIC
+# MAGIC You can do the same thing with an aggregate function on a column
+# MAGIC - `df.groupBy("department").agg(max("salary").alias("highest_salary"))`
+# MAGIC
+# MAGIC Alias renames a column
+# MAGIC
+# MAGIC https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.agg.html
+
+# COMMAND ----------
+
+# MAGIC %md 
+# MAGIC #### Where was the most expensive ice cream bought?
+
+# COMMAND ----------
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC #### What was the average price of items bought by George Black?
+# MAGIC
+
+# COMMAND ----------
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC #### How many items were bought in Manchester?
+
+# COMMAND ----------
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC #### Which person spent the least money overall?
+
+# COMMAND ----------
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC #### How much of the price was VAT?
+# MAGIC - Add a new column to show the VAT amount
+# MAGIC - Assume that VAT is 20% of the price
+# MAGIC - Show the amount to the nearest penny
+
+# COMMAND ----------
+
+

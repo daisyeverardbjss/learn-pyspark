@@ -22,10 +22,6 @@ from pyspark.sql import Column
 
 # COMMAND ----------
 
-import pandas as pd
-
-# COMMAND ----------
-
 # read the table you created as a dataframe
 df = spark.read.table('task1_input')
 
@@ -184,7 +180,7 @@ print(f"New Count: {new_count}")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### Challenged: split out names into first and last names using UDFs
+# MAGIC #### Challenge: split out names into first and last names using UDFs
 # MAGIC https://docs.databricks.com/en/udf/index.html
 # MAGIC
 # MAGIC hint: You'll need to define 2 functions that can get a first name and a last name, register them as udfs, then use them on the name column
@@ -337,7 +333,7 @@ print(f"total: {total}")
 
 # COMMAND ----------
 
-# Column transform version: This was is better
+# Column transform version: This way is better
 def get_vat_column(price_column: Column) -> Column:
     VAT_RATE = 0.2
     return F.round(price_column * 0.2, 2)
