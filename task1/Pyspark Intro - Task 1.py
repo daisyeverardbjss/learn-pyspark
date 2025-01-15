@@ -45,9 +45,9 @@ df.select('city', 'age').display()
 
 # filter columns to see only certain rows
 # there are many ways to access a column, chose whichever you prefer
-df.where(col("price") > 10).display()
+df.where(F.col("price") > 10).display()
 # or 
-df.filter(col("price") > 10).display()
+df.filter(F.col("price") > 10).display()
 # or
 df.filter(df['price'] > 10).display()
 # or 
@@ -57,7 +57,7 @@ df.filter(df.price > 10).display()
 
 # Add a new column using withColumn
 # lit adds the same 'literal' to every row of the column
-df.withColumn("new_column", lit("add this string to every cell")).display()
+df.withColumn("new_column", F.lit("add this string to every cell")).display()
 
 # COMMAND ----------
 
@@ -82,9 +82,9 @@ df.drop('city').drop('age').display()
 
 # COMMAND ----------
 
-df = df.TODO
+df_stripped_price = df.TODO
 
-df.display()
+df_stripped_price.display()
 
 # COMMAND ----------
 
@@ -105,7 +105,7 @@ df.display()
 
 # COMMAND ----------
 
-df = df.TODO
+df_float_price = df_stripped_price.TODO
 print(df.dtypes)
 
 # COMMAND ----------
@@ -120,9 +120,9 @@ print(df.dtypes)
 
 # COMMAND ----------
 
-df = df.TODO
+df_capitalised = df_float_price.TODO
 
-df.display()
+df_capitalised.display()
 
 # COMMAND ----------
 
@@ -133,15 +133,15 @@ df.display()
 
 # COMMAND ----------
 
-original_count = df.count()
+original_count = df_capitalised.count()
 
 # CHANGE CODE AFTER THIS LINE
 # ------------------------------
-df = df.TODO
+df_no_null_names = df_capitalised.TODO
 # ------------------------------
 # CHANGE CODE BEFORE THIS LINE
 
-new_count = df.count()
+new_count = df_no_null_names.count()
 print(f"Original Count: {original_count}")
 print(f"New Count: {new_count}")
 
@@ -158,15 +158,15 @@ print(f"New Count: {new_count}")
 # COMMAND ----------
 
 
-original_count = df.count()
+original_count = df_no_null_names.count()
 
 # CHANGE CODE AFTER THIS LINE
 # ------------------------------
-df = df.TODO
+df_filtered_ages = df_no_null_names.TODO
 # ------------------------------
 # CHANGE CODE BEFORE THIS LINE
 
-new_count = df.count()
+new_count = df_filtered_ages.count()
 
 print(f"Original Count: {original_count}")
 print(f"New Count: {new_count}")
@@ -192,11 +192,11 @@ def get_last_name(name: str) -> str:
 get_first_name_udf = TODO
 get_last_name_udf = TODO
 
-df = df.TODO
+df_split_name = df_filtered_ages.TODO
 
-df.display()
+df_split_name.display()
 
-# COMMAND
+# COMMAND ----------
 
 # MAGIC %md
 # MAGIC ## Use a column transform functions
@@ -258,6 +258,8 @@ df_split_name.display()
 
 # COMMAND ----------
 
+
+
 # COMMAND ----------
 
 # MAGIC %md
@@ -266,6 +268,8 @@ df_split_name.display()
 
 # COMMAND ----------
 
+
+
 # COMMAND ----------
 
 # MAGIC %md
@@ -273,12 +277,16 @@ df_split_name.display()
 
 # COMMAND ----------
 
+
+
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC #### Which person spent the least money overall?
 
 # COMMAND ----------
+
+
 
 # COMMAND ----------
 
