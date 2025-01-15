@@ -1,5 +1,0 @@
-In this task we will
-
-- Read a csv file into a dataframe
-- Clean the data using various pyspark methods
-- Save the data to a new output file

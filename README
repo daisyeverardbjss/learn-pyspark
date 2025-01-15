@@ -2,23 +2,46 @@
 
 This is a tutorial to try using the basics of pyspark to read a csv file into a dataframe and clean the data.
 
-There are 2 options to set up this project. It can either be run locally or run on a databricks account. The recommended approach is to set this up on databricks
+This demo is designed to be run on Databricks. A community edition account will allow you to access all the necessary functionality.
 
-# Databricks setup
+## Create account
 
-You may also run this lab by creating a databricks community edition account and using the notebooks provided in the `Databricks` directory. More detailed instructions can be found in the README there
+Complete the sign up process at https://www.databricks.com/try-databricks#account
+Chose the Community edition when signing up. You DO NOT need to set up a cloud account.
 
-# Local Setup
+## Setup Cluster
 
-THIS DOESN'T WORK YET, PLEASE USE DATABRICKS VERSION
+A cluster is a set of compute resources which will run your code
 
-asdf
-poetry
-python version = 3.12
+Once you are in the databricks environment, navigate to the `Compute` page on the left and click `Create Compute`
 
-run `poetry init`
-`poetry env use 3.12` will use python version 3.12
-With the terminal open in this project, run `poetry install --no-root` to install all the depencies in the pyproject.toml file
+Select the runtime `13.3` LTS from the dropdown then create the compute.
+It will take a few minutes to provision your resources
 
-Navigate to the Exercise 1 folder in the terminal and run the file task1.py with the command
-use `poetry run python task1.py` to run the file
+## Upload Databricks Notebooks
+
+To run the notebooks in this repository you will need to upload them to databricks
+Navigate to the `Workspace` page on the left then go to your `Home`
+Click the 3 dots in the top right and select `import`
+This will allow you to drag and drop or navigate to the file you want to upload. Please choose the file located in this repo in `task1/Pyspark Intro - Task 1.py`
+
+## Upload CSV file
+
+To upload the data we are using you will need the `Catalog`
+
+Select `Create Table` and leave the `Target Directory` blank
+Select `Upload file` and upload the data.csv file found in the task1 directory.Select `Create Table with UI`
+
+Choose the cluster you created earlier from the dropdown and select `Preview Table`
+Give your table a name. The name used in the example was `task1_input`. You can use any name.
+
+Tick the boxes for:
+
+- First row is header
+- Infer schema
+
+Select `Create Table`
+
+## Run your notebook
+
+Go back to the notebook we uploaded to your Home workspace and click `Connect` in the top right to attach the notebook to a cluster. Chose the cluster you created and wait for this to start. You can then follow the instructions in the notebook to process your data
