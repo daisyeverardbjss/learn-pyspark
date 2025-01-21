@@ -45,3 +45,7 @@ Select `Create Table`
 ## Run your notebook
 
 Go back to the notebook we uploaded to your Home workspace and click `Connect` in the top right to attach the notebook to a cluster. Chose the cluster you created and wait for this to start. You can then follow the instructions in the notebook to process your data
+
+## Extension task
+
+You will need to follow the same instructions as part 1 to upload the databricks notebook and CSV files. In this case there are 2 CSV files containing planet data which we will combine.
