@@ -77,10 +77,17 @@ df.drop('city').drop('age').display()
 # MAGIC %md
 # MAGIC
 # MAGIC #### Remove whitespace from strings
-# MAGIC Some of our columns have extra whitespace that need removing. For instance "London", "  London", and "London  " are all different
-# MAGIC Trim the whitespaces from name, city, product, and price
-# MAGIC https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.trim.html
+# MAGIC Some of our columns have extra whitespace that need removing. For instance "London", "  London", and "London  " are all different<br>
+# MAGIC Trim the whitespaces from name, city, product, and price<br>
+# MAGIC <br>
+# MAGIC Trim is part of the functions package which we have imported as F. This means you have to use it as  `F.trim(<column to trim>)`<br>
+# MAGIC The trim function takes an argument of type column, and also returns a column.<br>
+# MAGIC Once you've got the new column content, you'll need to overwrite the old column using `withColumn()`<br>
+# MAGIC <br>
+# MAGIC Official documentation to relevant methods is linked, but you may find it easier to find clear examples elsewhere<br>
+# MAGIC https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.trim.html<br>
 # MAGIC
+
 
 # COMMAND ----------
 
@@ -232,7 +239,7 @@ df_split_name.display()
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC # Part 2 - Answer the Questions
+# MAGIC # Part 2 - Analysis
 # MAGIC #### Use pyspark methods on your dataframe to find answers to these analytic questions about the data
 
 # COMMAND ----------
