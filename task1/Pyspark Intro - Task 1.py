@@ -59,6 +59,7 @@ df.filter(df.price > 10).display()
 
 # Add a new column using withColumn
 # lit adds the same 'literal' to every row of the column
+# A literal is a fixed value which doesn't require computation
 df.withColumn("new_column", F.lit("add this string to every cell")).display()
 
 # COMMAND ----------
