@@ -43,7 +43,7 @@ df.select('city', 'age').display()
 # COMMAND ----------
 
 # filter columns to see only certain rows
-# there are many ways to access a column, chose whichever you prefer
+# there are many ways to access a column, choose whichever you prefer
 df.where(F.col("price") > 10).display()
 # or 
 df.filter(F.col("price") > 10).display()
